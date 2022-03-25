@@ -2,6 +2,27 @@
   padding: 0 2rem;
 }
 
+.fx_c{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.fx_r{
+  display:flex !important;
+  flex-direction:row !important;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.showImg{
+  width:150px;
+  height:auto;
+}
+
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
