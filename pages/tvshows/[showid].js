@@ -39,9 +39,9 @@ export default function ShowDetail({show}){
         })();
     },[show.id]);
     return (
-        <div className={styles.fx_c}>
+        <div className={styles.fx_c} style={{padding:10,justifyContent: 'center'}}>
             <Link style={{padding:10}} href={`/`}>Back</Link>
-            <div className={styles.fx_r} style={{margin:10,justifyContent:'flex-start'}}>      
+            <div className={styles.fx_r} style={{margin:10,justifyContent:'center',width:'80%'}}>      
                 <div>
                     <img src={show.image.original} className={styles.showImg} alt="Loading Image"/>
                 </div>
