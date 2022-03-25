@@ -38,10 +38,10 @@ export default function Home({shows}) {
 
 function ShowWidget({show,score,openDetail}){
   return (
-    <Link href={`/tvshows/${show.id}`}>
+    <Link href={`/tvshows/${show.id}`} passHref={true}>
     <div className={styles.fx_c} style={{margin:10}}>      
         <div>
-          <img src={show.image.original} className={styles.showImg}/>
+          <img src={show.image.original} className={styles.showImg} alt="no image"/>
         </div>
         <div>
           {show.name}

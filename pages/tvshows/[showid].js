@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import {useEffect,useState} from "react";
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 export async function getStaticProps(context){
@@ -23,16 +24,29 @@ export async function getStaticPaths(context){
 }
 
 export default function ShowDetail({show}){
-
+    let [name,setName] = useState("");
+    useEffect(()=>{
+        (async ()=>{            
+            let getName=await fetch(`https://api.tvmaze.com/shows/${show.id}`);
+            getName=await getName.json();
+            
+            if(getName?.name.length>0)
+            {
+                setName(getName.name);
+                console.log("Data from API: ",getName.name);
+            }    
+            
+        })();
+    },[show.id]);
     return (
         <div className={styles.fx_c}>
             <Link style={{padding:10}} href={`/`}>Back</Link>
             <div className={styles.fx_r} style={{margin:10,justifyContent:'flex-start'}}>      
                 <div>
-                    <img src={show.image.original} className={styles.showImg}/>
+                    <img src={show.image.original} className={styles.showImg} alt="Loading Image"/>
                 </div>
                 <div className={styles.fx_c} style={{width:'70%',paddingLeft:10,alignItems:'flex-start'}}>
-                    <div style={{padding:10}}>{show.name}</div>
+                    <div style={{padding:10}}>{name}</div>
                     <div style={{padding:10}} className={styles.fx_r}>
                         {show.genres.map(genre=>(<div style={{paddingRight:10}} key={genre}>{genre}</div>))}
                     </div>
